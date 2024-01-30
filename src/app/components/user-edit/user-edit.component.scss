@@ -1,0 +1,32 @@
+.file-select {
+  position: relative;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.file-select::before {
+  background-color: rgb(168, 52, 250);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-size:0.9rem;
+  font-family: 'Roboto';
+  content: 'Subir imagen'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor:pointer;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 43px;
+  height: 32px;
+  display: inline-block;
+  cursor:pointer;
+
+}

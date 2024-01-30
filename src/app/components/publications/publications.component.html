@@ -1,0 +1,42 @@
+
+<div class="publications col-lg-11 offset-lg-1">
+
+  <mat-card *ngFor="let publication of publications" class="item-publication mt-2 " id="publications">
+
+    <div class="list-group row">
+
+      <div class="col-lg-1">
+        <div class="list-group-item">
+          <div class="avatar-btn col-lg-2 offset-lg-7" >
+            <img src="{{url + 'get-image-user/'+publication.user.image}}"
+             class="avatar-img" alt="">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <a  class="strong-text col-lg-12">{{publication.user.name + ' ' + publication.user.surname}} </a>
+         <div class="date">
+              {{publication.created_at | amFromUnix | amLocale: 'es' | amTimeAgo}}
+          </div>
+        <p class="col-lg-8 mt-2 publication">
+          {{publication.text}}
+        </p>
+
+          <div *ngIf="publication.file" >
+            <img src="{{url + 'get-image-pub/' + publication.file}}" class="img-pub"  alt="" />
+          </div>
+
+      </div>
+
+    </div>
+
+  </mat-card>
+
+  <div style="text-align: center;" *ngIf="publications && publications.length">
+    <button id="button" class="mt-4" mat-raised-button (click)="viewMore()" *ngIf="!noMore"
+    style="background: rgb(47, 192, 47);color:#fff;" >Ver más publicaciones</button>
+  </div>
+</div>
+

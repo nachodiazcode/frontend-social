@@ -1,0 +1,46 @@
+.nickname{
+  position: relative;
+  top:-20px;
+}
+
+.unFollow{
+  background-color: red;
+}
+
+.followbutton{
+  background-color:rgb(63, 209, 63);
+}
+
+.following-data{
+  margin-left: 10px;
+  text-align: center;
+  position: relative;
+  left:48px;
+}
+
+.following-data a{
+  text-decoration: none;
+  color: rgb(146, 146, 146);
+}
+
+.following-data a:hover{
+  text-decoration: none;
+  color: rgb(116, 116, 249);
+}
+
+.following-data a:active{
+  text-decoration: none;
+  color: rgb(116, 116, 249);
+}
+
+.stats{
+  padding: 4px;
+  position: relative;
+  top:-30px;
+  right:5px;
+}
+
+.photo-profile{
+  width: 160px;
+  height: 200px;
+}

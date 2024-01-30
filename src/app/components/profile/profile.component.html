@@ -1,0 +1,92 @@
+  <div class="d-flex justify-content-between" *ngIf="user">
+
+    <div class="col-lg-5">
+
+      <div class="col-lg-11 offset-lg-3 d-flex " >
+
+        <div class="profile col-lg-12 offset-lg-1 ">
+          <h1>{{title}}</h1>
+
+          <mat-card class="mt-2">
+            <div *ngIf="user" class="row">
+                <div class="avatar-btn col-lg-4 offset-lg-1" >
+                  <img src="{{url + 'get-image-user/'+user.image}}" *ngIf="user.image" width="120" alt="">
+                </div>
+
+                <div class="data-user col-lg-5">
+                  <h2>{{user.name + ' ' + user.surname}}</h2>
+                  <h3 class="nickname">{{user.nick}}</h3>
+
+                  <div class="stats d-flex justify-content-around" *ngIf="stats">
+
+                    <div class="following-data">
+                      <a href="">
+                        <span class="label-stats">
+                          Siguiendo
+                        </span>
+                        <div class="number-stats text-center">
+                          {{stats.following}}
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="following-data">
+                      <a href="#">
+                        <span class="label-stats">
+                          Seguidores
+                        </span>
+                        <div class="number-stats text-center">
+                          {{stats.followed}}
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="following-data">
+                      <a href="#">
+                        <span class="label-stats">
+                          Publicaciones
+                        </span>
+                        <div class="number-stats text-center">
+                          {{stats.publications}}
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="follow">
+
+                      <p *ngIf="!following">
+                        <button color="primary" class="followbutton" mat-raised-button (click)="followUser(user._id)">
+                          Seguir
+                        </button>
+                      </p>
+
+                      <p *ngIf="following">
+
+                      <button  [class.unFollow]="user._id == followUserOver "mat-raised-button color="accent" (click)="unfollowUser(user._id)" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter(user._id)" >
+                        <span *ngIf="user._id == followUserOver; else following " style="width:100px !important ;"> Dejar de seguir</span>
+                        <ng-template #following  color="accent">
+                            Siguiendo
+                        </ng-template>
+                      </button>
+                      </p>
+
+                  </div>
+                </div>
+
+            </div>
+
+        </mat-card>
+        <div class="mt-4" *ngIf="user" style="position: relative; right:108px;">
+          <h1 style="position: relative;left:110px;">Publicaciones de {{user.name}}</h1>
+          <publications [user]="user._id" ></publications>
+        </div>
+  </div>
+
+  <div class="col-lg-12 mt-5">
+    <app-sidebar></app-sidebar>
+  </div>
+
+</div>
+

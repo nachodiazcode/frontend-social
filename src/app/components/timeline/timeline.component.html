@@ -1,0 +1,58 @@
+<div class="row d-flex justify-content-between timeline" >
+  <div class="col-md-8 col-lg-7 col-sm-8 col-md-12 " >
+    <div class="publications col-md-12  col-lg-10" id="publications"  >
+
+      <mat-card *ngFor="let publication of publications" class="item-publication mt-3 col-9 offset-1 col-sm-12 offset-sm-2 col-md-8 col-lg-12 col-xl-8 offset-xl-6">
+
+        <button mat-raised-button color="warn" (click)="deletePublication(publication._id)" style="float:right;" *ngIf="publication.user._id == identity._id ">
+          <span class="material-icons">
+          delete
+          </span></button>
+
+        <div class="list-group row">
+
+          <div class="col-lg-1">
+            <div class="list-group-item">
+              <div class="avatar-btn col-lg-3 offset-lg-9" >
+                <img src="{{url + 'get-image-user/'+publication.user.image}}"
+                 class="avatar-img" alt="">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-9">
+
+            <a class="strong-text col-lg-12" [routerLink]="['/perfil', publication.user._id]">{{publication.user.name + ' ' + publication.user.surname}} </a>
+            <div class="date">
+                {{publication.created_at | amFromUnix | amLocale: 'es' | amTimeAgo}}
+            </div>
+
+            <br>
+
+            <p class="col-lg-8 mt-2 publication">
+              {{publication.text}}
+            </p>
+
+            <div *ngIf="publication.file" >
+              <img src="{{url+'get-image-pub/'+publication.file}}" class="img-responsive col-12  col-sm-12 col-md-12 col-lg-12" />
+            </div>
+          </div>
+
+        </div>
+
+      </mat-card>
+
+      <div style="text-align: center;" *ngIf="publications && publications.length">
+        <button id="button" class="mt-4" mat-raised-button (click)="viewMore()" *ngIf="!noMore"
+        style="background: rgb(47, 192, 47);color:#fff;" >Ver más publicaciones</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container col-12 offset-0 col-sm-12 offset-lg-1 col-md-8 col-lg-4 col-xl-3 mt-3 sidebar">
+    <app-sidebar (sended)="refresh()" ></app-sidebar>
+  </div>
+
+</div>

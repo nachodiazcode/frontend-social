@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-between">
+  <div class="col-lg-5 ">
+
+  <div class="col-lg-12 offset-lg-4" >
+
+    <h1>Gente</h1>
+
+    <mat-card *ngFor="let user of users"  class="mt-2">
+
+      <mat-selection-list>
+        <mat-list-item >
+          <div class="avatar-btn offset-lg-1" >
+            <img src="{{url + 'get-image-user/'+user.image}}" class="avatar-img" alt="">
+          </div>
+          <div class="data  col-4 col-sm-3 col-xs-5 col-lg-4" [routerLink]="['/perfil', user._id]"
+          style="margin-left:20px; margin-top:10px; ">
+            {{user.name}}
+            <br>
+            {{user.surname}}
+          </div>
+
+          <div class=" offset-lg-2 offset-sm-6 offset-md-4 offset-xs-1">
+
+              <p *ngIf="!following">
+
+                <button class="btn btn-success" mat-raised-button color="primary" (click)="followUser(user._id)" *ngIf="follows.indexOf(user._id) < 0">
+                  <span class="material-icons-outlined">
+                    add_circle
+                  </span>
+                  seguir
+                </button>
+
+              </p>
+
+                <button mat-raised-button color="accent" class="btn btn-danger"
+                (click)="unfollowUser(user._id)"
+                *ngIf="follows.indexOf(user._id) >= 0"
+
+                (mouseenter)="mouseEnter(user._id)"
+                (mouseleave)="mouseLeave()"
+                [class.btn-danger]="user._id == followUserOver"
+                >
+
+                <span *ngIf="user._id == followUserOver; else following">
+                  <span class="material-icons-outlined">
+                    remove_circle
+                  </span>
+                  dejar de seguir
+                </span>
+
+                <ng-template #following>
+                  <span class="material-icons-outlined">
+                    check_circle
+                  </span>
+                  siguiendo
+                </ng-template>
+
+              </button>
+
+          </div>
+
+        </mat-list-item>
+      </mat-selection-list>
+
+    </mat-card>
+
+    <div class="pagination mt-4 offset-lg-9">
+        <button [routerLink]="['/gente', prev_page ]" class="page-item" mat-raised-button color="basic" *ngIf="page > 1">
+          <div class="page-link">
+            Anterior
+          </div>
+        </button>
+        <button [routerLink]="['/gente', next_page]"  class="page-item" mat-raised-button color="basic" *ngIf="pages != page">
+          <div class="page-link" href="#">
+            Siguiente
+          </div>
+        </button>
+    </div>
+
+  </div>
+
+  </div>
+
+  <div class="col-lg-4 mt-2" style="position:relative ; right:10rem;">
+    <app-sidebar></app-sidebar>
+  </div>
+
+</div>
+

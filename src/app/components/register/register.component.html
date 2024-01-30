@@ -1,0 +1,55 @@
+<div class="row">
+
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    El registro no se ha podido completar, quizás tu correo ya este en uso,
+    intentalo nuevamente
+  </div>
+
+  <div class="alert alert-success " *ngIf="status == 'success'">
+    Registro completado correctamente, <a [routerLink]="['/login']">Logueate Aquí</a>
+  </div>
+
+  <div class="d-flex justify-content-around mt-4">
+
+      <form #form="ngForm"  class="col-lg-" (ngSubmit)="onSubmit(form)">
+
+        <h1 class="offset-lg-5 mt-5">Registrese Para disfrutar de pepol.io...</h1>
+
+        <mat-form-field class="col-lg-10" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input type="email" matInput name="name" #name="ngModel" [(ngModel)]="user.name">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-10" appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input type="email" matInput name="surname"  #surname="ngModel" [(ngModel)]="user.surname">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-10" appearance="fill">
+          <mat-label>Nombre de usuario</mat-label>
+          <input type="email" matInput name="nick" #nick="ngModel" [(ngModel)]="user.nick">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-10" appearance="fill">
+          <mat-label>Correo</mat-label>
+          <input type="email" matInput name="name" #email="ngModel" [(ngModel)]="user.email">
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-10" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput name="password" #password="ngModel" [(ngModel)]="user.password">
+        </mat-form-field>
+
+        <div>
+          <button mat-raised-button color="primary">Registrar</button>
+        </div>
+
+      </form>
+
+      <img src="../../../assets/img/undraw_moment_to_remember_re_t18u (1).svg"
+      class="col-lg-6" alt="">
+
+  </div>
+
+</div>
+

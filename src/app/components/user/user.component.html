@@ -1,0 +1,60 @@
+<div class="col-lg-8  offset-lg-2 d-flex justify-content-between">
+
+  <br>
+  <h1 class="h1-strong">{{title}}</h1>
+  <hr>
+
+  <div class="people">
+
+    <div *ngFor="let user of users">
+
+      <div class="card mb-3" style="max-width: 100%;">
+
+            <div class="row g-0">
+
+              <div class="col-md-3">
+                    <img src="{{url+'get-image-user/'+user.image}}" class="img-fluid rounded-start" alt="...">
+              </div>
+
+              <div class="col-md-8" style="margin-left:30px;">
+                <div class="card-body">
+                  <h5 class="card-title">{{user.name + ' ' + user.surname}}</h5>
+                  <p class="card-text">{{user.nick}}</p>
+              </div>
+
+              <div class="pull-right" >
+                <button class="btn btn-success" (click)="followUser(user._id)" *ngIf="follows.indexOf(user._id) < 0" >
+                  <span class="material-icons">
+                        add
+                  </span>
+                    Seguir
+              </button>
+
+              <button class="btn btn-success" *ngIf="follows.indexOf(user._id) >= 0"
+                      (mouseenter)="mouseEnter(user._id)"
+                      (mouseleave)="mouseLeave(user._id)"
+                      [class.btn-danger]="user._id == followUserOver">
+
+                <span *ngIf="user._id == followUserOver; else following" (click)="unfollowUser(user._id)">
+                  <span class="material-icons">
+                    delete
+                  </span>
+                  Dejar de seguir
+                </span>
+
+                <ng-template #following  >
+                  <span class="material-icons">
+                    add
+                  </span>
+                  Siguiendo
+                </ng-template>
+
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

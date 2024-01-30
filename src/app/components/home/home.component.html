@@ -1,0 +1,18 @@
+<div class="row col-lg-12 mt-5" *ngIf="identity" style="margin-top:120px;">
+  <h1 class="h1-strong" style="text-align:center ;">Hola {{identity.name}}, Bienvenido a pepol.io </h1>
+  <h3 style="text-align:center ; position: relative; top:-20px;">donde podrás contactarte con tus amigos</h3>
+  <app-sidebar class="mt-4" >
+  </app-sidebar>
+</div>
+<div class="row col-xs-8 col-sm-8 col-lg-8 offset-lg-2 text-center" *ngIf="!identity">
+  <h1>Bienvenido a Pepol.io | Hecha en Chile</h1>
+  <h2>Pepol.io es una red social para que te conectes con tus amigos y parientes de forma segura !  <br> La red social más grande de Chile es pepol.io </h2>
+  <app-timeline>
+  </app-timeline>
+  <a class="btn btn-warning btn-lg mt-4" [routerLink]="['/login']"
+  role="button">
+    Iniciar Sesión
+  </a>
+</div>
+
+

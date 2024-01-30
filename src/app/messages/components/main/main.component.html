@@ -1,0 +1,49 @@
+<div class="row col-lg-10 offset-lg-1">
+
+  <mat-drawer-container class="example-container" autosize >
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <mat-list role="list">
+        <mat-list-item role="listitem" >
+
+          <a mat-button [routerLink]="['enviar']" [routerLinkActive]="['active']">
+            <span class="material-icons-outlined">
+              edit
+              </span>
+            Redactar Mensaje
+          </a>
+         </mat-list-item>
+         <mat-list-item role="listitem">
+          <a mat-button  [routerLink]="['recibidos', 1] " [routerLinkActive]="['active']">
+            <span class="material-icons-outlined">
+              inbox
+              </span>
+            Mensajes Recibidos
+          </a>
+         </mat-list-item>
+         <mat-list-item role="listitem">
+          <a mat-button  [routerLink]="['enviados', 1]" [routerLinkActive]="['active']">
+            <span class="material-icons-outlined">
+              mark_unread_chat_alt
+              </span>
+            Mensajes Enviados
+          </a>
+         </mat-list-item>
+      </mat-list>
+
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    </div>
+
+    <div class="col-lg-12 offset-lg-1">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-container>
+
+</div>

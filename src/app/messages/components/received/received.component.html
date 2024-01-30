@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between" *ngIf="messages">
+
+  <div class="col-lg-12">
+
+      <div class="col-lg-12">
+
+        <h1>{{title}} </h1>
+
+        <mat-card *ngFor="let message of messages" class="mt-2">
+
+          <mat-selection-list *ngIf="message.emitter">
+            <mat-list-item style="height:auto;" >
+              <div class="avatar-btn offset-lg-1" >
+                <img src="{{url+'get-image-user/'+message.emitter.image}}" *ngIf="message.emitter.image" class="avatar-img" alt="">
+              </div>
+              <div class="data col-6 col-sm-3 col-xs-5 col-lg-12 " [routerLink]="['/perfil', message.emitter._id]" >
+                {{message.emitter.name}}
+                {{message.emitter.surname}}
+                <br>
+                {{ (message.created_at | amFromUnix ) | amLocale:'es' | amTimeAgo }}
+
+                <div class="mt-2  ">
+                  Tienes un mensaje de  :  {{message.emitter.name + ' ' + message.emitter.surname }}
+                </div>
+
+                <div class="mt-2  ">
+                  Mensaje: {{message.text}}
+                </div>
+              </div>
+
+            </mat-list-item>
+          </mat-selection-list>
+
+        </mat-card>
+
+        <div class="pagination mt-4 offset-lg-9">
+            <button [routerLink]="['/mensajes/recibidos', prev_page ]" class="page-item" mat-raised-button
+            color="basic" *ngIf="page > 1">
+              <div class="page-link">
+                Anterior
+              </div>
+            </button>
+            <button [routerLink]="['/mensajes/recibidos', next_page]"  class="page-item" mat-raised-button
+            color="basic" *ngIf="pages != page">
+              <div class="page-link" href="#">
+                Siguiente
+              </div>
+            </button>
+        </div>
+
+      </div>
+
+  </div>
+</div>
+
